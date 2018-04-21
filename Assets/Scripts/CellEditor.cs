@@ -12,9 +12,9 @@ public class CellEditor : Editor {
         DrawDefaultInspector();
 
         Cell script = (Cell)target;
-        if (GUILayout.Button("Generate Behavior"))
+        if (GUILayout.Button("Generate Cell"))
         {
-            script.GenerateBehavior();
+            script.GenerateCell();
         }
     }
 }

@@ -21,6 +21,10 @@ public class GridControllerEditor : Editor {
         {
             script.Clear();
         }
+        if (GUILayout.Button("Check Grid"))
+        {
+            script.CheckGrid();
+        }
     }
 }
 #endif
