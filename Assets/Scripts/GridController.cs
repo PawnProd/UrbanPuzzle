@@ -14,7 +14,7 @@ public class GridController : MonoBehaviour {
     public Transform startPosition;
 
     // La grille contenant les cellules
-    public Cell[,] grid = new Cell[4,4];
+    public Cell[,] grid;
 
 	public void GenerateGrid()
     {

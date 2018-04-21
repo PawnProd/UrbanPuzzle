@@ -13,12 +13,12 @@ public class CellBehaviour : MonoBehaviour {
 
 
     private Cell cell;
-    private Cell[,] grid;
+    private Cell[,] gridC;
 
     public void Initialise()
     {
         cell = GetComponent<Cell>();
-        grid = transform.parent.GetComponent<GridController>().grid;
+        gridC = transform.parent.GetComponent<GridController>().grid;
     }
 
     public bool CheckBehavior()
@@ -56,58 +56,74 @@ public class CellBehaviour : MonoBehaviour {
         List<Cell> allNeightboor = new List<Cell>();
 
         // Gestion des cas particuliers
-            if (x == grid.GetLength(0) - 1 && y == grid.GetLength(0) - 1) // TOP - RIGHT
+            if (x == gridC.GetLength(0) - 1 && y == gridC.GetLength(0) - 1) // TOP - RIGHT
             {
 
-                allNeightboor.Add(grid[x, y - 1]);
-                allNeightboor.Add(grid[x - 1, y - 1]);
-                allNeightboor.Add(grid[x - 1, y]);
+                allNeightboor.Add(gridC[x, y - 1]);
+                allNeightboor.Add(gridC[x - 1, y - 1]);
+                allNeightboor.Add(gridC[x - 1, y]);
             }
-            else if (x == grid.GetLength(0) - 1 && y == 0) // BOTTOM - RIGTH
+            else if (x == gridC.GetLength(0) - 1 && y == 0) // BOTTOM - RIGTH
             {
-                allNeightboor.Add(grid[x, y + 1]);
-                allNeightboor.Add(grid[x - 1, y + 1]);
-                allNeightboor.Add(grid[x - 1, y]);
+                allNeightboor.Add(gridC[x, y + 1]);
+                allNeightboor.Add(gridC[x - 1, y + 1]);
+                allNeightboor.Add(gridC[x - 1, y]);
             }
-            else if (x == 0 && y == grid.GetLength(0) - 1) // TOP - LEFT
+            else if (x == 0 && y == gridC.GetLength(0) - 1) // TOP - LEFT
             {
 
-                allNeightboor.Add(grid[x + 1, y]);
-                allNeightboor.Add(grid[x + 1, y - 1]);
-                allNeightboor.Add(grid[x, y - 1]);
+                allNeightboor.Add(gridC[x + 1, y]);
+                allNeightboor.Add(gridC[x + 1, y - 1]);
+                allNeightboor.Add(gridC[x, y - 1]);
             }
             else if (x == 0 && y == 0) // BOTTOM - LEFT
             {
-                allNeightboor.Add(grid[x, y + 1]);
-                allNeightboor.Add(grid[x + 1, y + 1]);
-                allNeightboor.Add(grid[x + 1, y]);
+                allNeightboor.Add(gridC[x, y + 1]);
+                allNeightboor.Add(gridC[x + 1, y + 1]);
+                allNeightboor.Add(gridC[x + 1, y]);
             }
             else if(x == 0)
             {
-                allNeightboor.Add(grid[x, y - 1]);
-                allNeightboor.Add(grid[x + 1, y + 1]);
-                allNeightboor.Add(grid[x, y + 1]);
-                allNeightboor.Add(grid[x + 1, y - 1]);
-                allNeightboor.Add(grid[x + 1, y]);
+                allNeightboor.Add(gridC[x, y - 1]);
+                allNeightboor.Add(gridC[x + 1, y + 1]);
+                allNeightboor.Add(gridC[x, y + 1]);
+                allNeightboor.Add(gridC[x + 1, y - 1]);
+                allNeightboor.Add(gridC[x + 1, y]);
             }
             else if (y == 0)
             {
-                allNeightboor.Add(grid[x + 1, y]);
-                allNeightboor.Add(grid[x + 1, y + 1]);
-                allNeightboor.Add(grid[x, y + 1]);
-                allNeightboor.Add(grid[x - 1, y]);
-                allNeightboor.Add(grid[x - 1, y + 1]);
+                allNeightboor.Add(gridC[x + 1, y]);
+                allNeightboor.Add(gridC[x + 1, y + 1]);
+                allNeightboor.Add(gridC[x, y + 1]);
+                allNeightboor.Add(gridC[x - 1, y]);
+                allNeightboor.Add(gridC[x - 1, y + 1]);
             }
-            else
+            else if (x == gridC.GetLength(0) - 1)
             {
-                allNeightboor.Add(grid[x + 1, y]);
-                allNeightboor.Add(grid[x + 1, y + 1]);
-                allNeightboor.Add(grid[x, y + 1]);
-                allNeightboor.Add(grid[x - 1, y + 1]);
-                allNeightboor.Add(grid[x - 1, y]);
-                allNeightboor.Add(grid[x - 1, y - 1]);
-                allNeightboor.Add(grid[x, y - 1]);
-                allNeightboor.Add(grid[x + 1, y - 1]);
+                allNeightboor.Add(gridC[x, y - 1]);
+                allNeightboor.Add(gridC[x - 1, y + 1]);
+                allNeightboor.Add(gridC[x, y + 1]);
+                allNeightboor.Add(gridC[x - 1, y - 1]);
+                allNeightboor.Add(gridC[x - 1, y]);
+            }
+            else if (y == gridC.GetLength(0) - 1)
+            {
+                allNeightboor.Add(gridC[x + 1, y]);
+                allNeightboor.Add(gridC[x + 1, y - 1]);
+                allNeightboor.Add(gridC[x, y - 1]);
+                allNeightboor.Add(gridC[x - 1, y]);
+                allNeightboor.Add(gridC[x - 1, y - 1]);
+            }
+        else
+            {
+                allNeightboor.Add(gridC[x + 1, y]);
+                allNeightboor.Add(gridC[x + 1, y + 1]);
+                allNeightboor.Add(gridC[x, y + 1]);
+                allNeightboor.Add(gridC[x - 1, y + 1]);
+                allNeightboor.Add(gridC[x - 1, y]);
+                allNeightboor.Add(gridC[x - 1, y - 1]);
+                allNeightboor.Add(gridC[x, y - 1]);
+                allNeightboor.Add(gridC[x + 1, y - 1]);
             }
 
         return allNeightboor;
