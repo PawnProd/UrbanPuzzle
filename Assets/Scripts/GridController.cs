@@ -14,7 +14,7 @@ public class GridController : MonoBehaviour {
     public Transform startPosition;
 
     // La grille contenant les cellules
-    public Cell[,] grid = new Cell[0,0];
+    public Cell[,] grid = new Cell[4,4];
 
 	public void GenerateGrid()
     {
@@ -35,7 +35,6 @@ public class GridController : MonoBehaviour {
                 cellPos.z = posY;
                 grid[x, y] = Instantiate(cellPrefab, cellPos, Quaternion.identity, transform).GetComponent<Cell>();
                 grid[x, y].SetPos(x, y);
-                grid[x, y].type = CellType.empty;
                 posY += 2;
             }
 
@@ -61,6 +60,7 @@ public class GridController : MonoBehaviour {
         {
             for (int y = 0; y < gridSize; ++y) // VERTICAL
             {
+                Debug.Log("X = " + x + " Y = " + y + " grid = " + grid[x, y]);
                 if(grid[x,y].GetComponent<CellBehaviour>() != null)
                     if(!grid[x,y].GetComponent<CellBehaviour>().CheckBehavior())
                         throw new System.Exception("La condition de la cellule[" + x + "," + y + "] n'est pas remplit");
