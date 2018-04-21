@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 using UnityEngine;
 
 public class GridController : MonoBehaviour {
@@ -14,9 +16,17 @@ public class GridController : MonoBehaviour {
     public Transform startPosition;
 
     // La grille contenant les cellules
+    [SerializeField]
     public Cell[,] grid;
 
-	public void GenerateGrid()
+    private Vector3 m_centerGrid;
+
+    private void Start()
+    {
+        m_centerGrid = GetCenter();
+    }
+
+    public void GenerateGrid()
     {
         // Initialisation de la grille
         grid = new Cell[gridSize, gridSize];
@@ -66,5 +76,55 @@ public class GridController : MonoBehaviour {
                         throw new System.Exception("La condition de la cellule[" + x + "," + y + "] n'est pas remplit");
             }
         }
+    }
+
+    public Vector3 GetCenter()
+    {
+        var rends = GetComponentsInChildren<MeshRenderer>();
+
+        if (rends.Length == 0)
+        {
+            return transform.position;
+        }
+        else
+        {
+            var b = rends[0].bounds;
+            for (int i = 1; i < rends.Length; ++i)
+            {
+                b.Encapsulate(rends[i].bounds);
+            }
+            return b.center;
+        }
+        
+    }
+
+    public void PlaceCommerceInCell(Cell cell)
+    {
+        cell.type = CellType.commerce;
+        cell.GenerateCell();
+    }
+
+    public void PlaceResidenceInCell(Cell cell)
+    {
+        cell.type = CellType.residence;
+        cell.GenerateCell();
+    }
+
+    public void PlaceIndustrieInCell(Cell cell)
+    {
+        cell.type = CellType.industrie;
+        cell.GenerateCell();
+    }
+
+    public void PlaceParcInCell(Cell cell)
+    {
+        cell.type = CellType.parc;
+        cell.GenerateCell();
+    }
+
+    public void Rotate(float yawValue)
+    {
+        print(m_centerGrid);
+         transform.RotateAround(m_centerGrid, Vector3.up, yawValue);
     }
 }

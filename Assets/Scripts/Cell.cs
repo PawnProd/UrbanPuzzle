@@ -14,13 +14,19 @@ public class Cell : MonoBehaviour {
     // La taille de la cellule
     public int cellSize;
 
+    public GameObject[] prefabsCell;
+
+
+
     // La position de la cellule dans la grille
     private int m_posX;
     private int m_posY;
 
-    public GameObject[] prefabsCell;
+    private void Update()
+    {
 
-	public void SetPos(int x, int y)
+    }
+    public void SetPos(int x, int y)
     {
         m_posX = x;
         m_posY = y;

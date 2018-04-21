@@ -23,7 +23,7 @@ public class GridControllerEditor : Editor {
         }
         if (GUILayout.Button("Check Grid"))
         {
-            script.CheckGrid();
+           // script.CheckGrid();
         }
     }
 }

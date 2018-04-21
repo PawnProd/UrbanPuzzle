@@ -11,7 +11,6 @@ public class CellBehaviour : MonoBehaviour {
         Initialise();
     }
 
-
     private Cell cell;
     private Cell[,] gridC;
 
