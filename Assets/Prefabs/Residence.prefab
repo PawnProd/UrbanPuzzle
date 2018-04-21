@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33559642884864034}
   - component: {fileID: 65961647658155902}
   - component: {fileID: 23478059142445506}
+  - component: {fileID: 114184397415743300}
   m_Layer: 0
   m_Name: Residence
   m_TagString: Untagged
@@ -95,3 +96,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114184397415743300
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1116559715627376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61a2282b697e1984f86bf36a8a0157f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ressources:
+    money: 0
+    energy: 0
+    population: 0
+    pollution: 0
+  cellConditions:
+  - key: 3
+    value: 1
+  - key: 1
+    value: 0

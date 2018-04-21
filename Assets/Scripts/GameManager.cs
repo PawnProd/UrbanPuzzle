@@ -53,8 +53,6 @@ public class GameManager : MonoBehaviour {
                     }
                 }
             }
-
-            Destroy(athManager.cell);
         }
        
     }

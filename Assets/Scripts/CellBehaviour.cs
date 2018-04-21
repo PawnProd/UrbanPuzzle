@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CellBehaviour : MonoBehaviour {
 
+    [HideInInspector]
     public List<Conditions> cellConditions = new List<Conditions>();
 
     private void Start()
@@ -18,14 +19,12 @@ public class CellBehaviour : MonoBehaviour {
     {
         cell = GetComponent<Cell>();
         gridC = transform.parent.GetComponent<GridController>().grid;
+        cellConditions = cell.building.cellConditions;
     }
 
     public bool CheckBehavior()
     {
-        if (!cell)
-        {
-            Initialise();
-        }
+        Initialise();
 
         List<Cell> allNeightboor = GetAllNeightboor(cell.GetPosX(), cell.GetPosY());
 
@@ -33,6 +32,11 @@ public class CellBehaviour : MonoBehaviour {
 
         foreach (Conditions condition in cellConditions)
         {
+            print("Conditions : " + condition.key);
+            foreach(Cell cell in allNeightboor)
+            {
+                print("Cell[" + cell.GetPosX()+"," + cell.GetPosY()+"] : " + cell.type);
+            }
             if (condition.value != allNeightboor.Exists(x => x.type == condition.key))
             {
                 isOk = false;
@@ -53,7 +57,7 @@ public class CellBehaviour : MonoBehaviour {
     public List<Cell> GetAllNeightboor(int x, int y)
     {
         List<Cell> allNeightboor = new List<Cell>();
-
+        print("Coucou");
         // Gestion des cas particuliers
             if (x == gridC.GetLength(0) - 1 && y == gridC.GetLength(0) - 1) // TOP - RIGHT
             {

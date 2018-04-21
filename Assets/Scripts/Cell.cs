@@ -8,24 +8,17 @@ public class Cell : MonoBehaviour {
     // Le type de la cellule
     public CellType type;
 
-    // La liste des gains/pertes de ressources généré par la cellule
-    public RessourcesGain ressources;
-
     // La taille de la cellule
     public int cellSize;
 
     public GameObject[] prefabsCell;
 
-
+    public BuildingController building;
 
     // La position de la cellule dans la grille
-    private int m_posX;
-    private int m_posY;
+    public int m_posX;
+    public int m_posY;
 
-    private void Update()
-    {
-
-    }
     public void SetPos(int x, int y)
     {
         m_posX = x;
@@ -44,30 +37,68 @@ public class Cell : MonoBehaviour {
 
     public void GenerateCell()
     {
-        if(type != CellType.empty && type != CellType.mountain)
+        if (type != CellType.empty && type != CellType.mountain)
         {
             gameObject.AddComponent<CellBehaviour>();
         }
-        
+
         switch (type)
         {
             case CellType.residence:
-                Instantiate(prefabsCell[0], transform);
+                building = Instantiate(prefabsCell[0], transform).GetComponent<BuildingController>();
                 break;
             case CellType.industrie:
-                Instantiate(prefabsCell[1], transform);
+                building = Instantiate(prefabsCell[1], transform).GetComponent<BuildingController>();
                 break;
             case CellType.commerce:
-                Instantiate(prefabsCell[2], transform);
+                building = Instantiate(prefabsCell[2], transform).GetComponent<BuildingController>();
                 break;
             case CellType.parc:
-                Instantiate(prefabsCell[3], transform);
+                building = Instantiate(prefabsCell[3], transform).GetComponent<BuildingController>();
                 break;
             case CellType.mountain:
-                Instantiate(prefabsCell[4], transform);
+                building = Instantiate(prefabsCell[4], transform).GetComponent<BuildingController>();
                 break;
             default:
                 break;
+        }
+    }
+
+    public void GenerateCellInGame()
+    {
+        if (type != CellType.empty && type != CellType.mountain)
+        {
+            gameObject.AddComponent<CellBehaviour>();
+        }
+
+        switch (type)
+        {
+            case CellType.residence:
+                building = Instantiate(prefabsCell[0], transform).GetComponent<BuildingController>();
+                break;
+            case CellType.industrie:
+                building = Instantiate(prefabsCell[1], transform).GetComponent<BuildingController>();
+                break;
+            case CellType.commerce:
+                building = Instantiate(prefabsCell[2], transform).GetComponent<BuildingController>();
+                break;
+            case CellType.parc:
+                building = Instantiate(prefabsCell[3], transform).GetComponent<BuildingController>();
+                break;
+            case CellType.mountain:
+                building = Instantiate(prefabsCell[4], transform).GetComponent<BuildingController>();
+                break;
+            default:
+                break;
+        }
+
+        if (!gameObject.GetComponent<CellBehaviour>().CheckBehavior())
+        {
+            Destroy(building.gameObject);
+        }
+        else
+        {
+            Destroy(GameManager.Instance.athManager.cell.gameObject);
         }
     }
 }

@@ -16,14 +16,45 @@ public class GridController : MonoBehaviour {
     public Transform startPosition;
 
     // La grille contenant les cellules
-    [SerializeField]
     public Cell[,] grid;
+
+    public List<Temp> temp;
 
     private Vector3 m_centerGrid;
 
-    private void Start()
+    private MemoryStream ms;
+
+    private void Awake()
     {
         m_centerGrid = GetCenter();
+        CopyToGrid();
+    }
+
+    public void CopyToTemp()
+    {
+        temp = new List<Temp>();
+        for (int x = 0; x < gridSize; ++x) // HORIZONTAL
+        {
+            temp.Add(new Temp());
+            for (int y = 0; y < gridSize; ++y) // VERTICAL
+            {
+                temp[x].cellList.Add(grid[x, y]);
+            }
+        }
+    }
+
+    public void CopyToGrid()
+    {
+        grid = new Cell[gridSize, gridSize];
+        for (int x = 0; x < gridSize; ++x) // HORIZONTAL
+        {
+            for (int y = 0; y < gridSize; ++y) // VERTICAL
+            {
+                print("Temp " + temp[x].cellList[y].GetPosX());
+                grid[x, y] = temp[x].cellList[y];
+                print("Grid " + grid[x, y].GetPosX());
+            }
+        }
     }
 
     public void GenerateGrid()
@@ -45,11 +76,15 @@ public class GridController : MonoBehaviour {
                 cellPos.z = posY;
                 grid[x, y] = Instantiate(cellPrefab, cellPos, Quaternion.identity, transform).GetComponent<Cell>();
                 grid[x, y].SetPos(x, y);
+                grid[x, y].type = CellType.empty;
+                grid[x, y].gameObject.tag = "Cell";
                 posY += 2;
             }
 
             posX += 2;
         }
+
+        CopyToTemp();
     }
 
     public void Clear()
@@ -101,30 +136,41 @@ public class GridController : MonoBehaviour {
     public void PlaceCommerceInCell(Cell cell)
     {
         cell.type = CellType.commerce;
-        cell.GenerateCell();
+        cell.GenerateCellInGame();
     }
 
     public void PlaceResidenceInCell(Cell cell)
     {
         cell.type = CellType.residence;
-        cell.GenerateCell();
+        cell.GenerateCellInGame();
     }
 
     public void PlaceIndustrieInCell(Cell cell)
     {
         cell.type = CellType.industrie;
-        cell.GenerateCell();
+        cell.GenerateCellInGame();
     }
 
     public void PlaceParcInCell(Cell cell)
     {
         cell.type = CellType.parc;
-        cell.GenerateCell();
+        cell.GenerateCellInGame();
     }
 
     public void Rotate(float yawValue)
     {
         print(m_centerGrid);
          transform.RotateAround(m_centerGrid, Vector3.up, yawValue);
+    }
+}
+
+[System.Serializable]
+public class Temp
+{
+    public List<Cell> cellList;
+
+    public Temp()
+    {
+        cellList = new List<Cell>();
     }
 }

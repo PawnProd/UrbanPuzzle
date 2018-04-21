@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33865650642945502}
   - component: {fileID: 65160980996587634}
   - component: {fileID: 23976157040279382}
+  - component: {fileID: 114958116995829308}
   m_Layer: 0
   m_Name: Industrie
   m_TagString: Untagged
@@ -95,3 +96,26 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114958116995829308
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1126486309905798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61a2282b697e1984f86bf36a8a0157f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ressources:
+    money: 0
+    energy: 0
+    population: 0
+    pollution: 0
+  cellConditions:
+  - key: 0
+    value: 0
+  - key: 3
+    value: 0
+  - key: 2
+    value: 1
