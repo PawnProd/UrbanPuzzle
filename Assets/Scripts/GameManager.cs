@@ -9,7 +9,12 @@ public class GameManager : MonoBehaviour {
     public GridController gridController;
     public ATHManager athManager;
     public RessourcesGain ressources;
-    public PanelValue ressourcesEcrit;
+
+    public bool isEnvironnement, isEnergy, isPopulation, isMoney;
+    public bool commerceOk, habitationOk, usineOk, jardinOk;
+    public bool objectifRemplis;
+    public int environnementObjectives, energyObjectives, populationObjectives, moneyObjectives;
+
 
     // Use this for initialization
     void Awake () {
@@ -82,12 +87,11 @@ public class GameManager : MonoBehaviour {
             }
         }
         ressources = ressourcesGrid;
-        ressourcesEcrit.RessourcesText.text =
-            "Ressource :" + "\r\n" +
-            "Argent: "+ ressourcesGrid.money + "\r\n"+
-            "Energie: " + ressourcesGrid.energy + "\r\n"+
-            "Habitant: " + ressourcesGrid.population + "\r\n"+
-            "Environnement: " + ressourcesGrid.pollution + "\r\n"
-            ;
+
+        athManager.MoneyCount.text = "MONEY "+ressourcesGrid.energy;
+        athManager.EnergyCount.text = "ENERGY " + ressourcesGrid.money;
+        athManager.PopulationCount.text = "POPULATION " + ressourcesGrid.population;
+        athManager.EnvironnmentCount.text = "POLLUTION " + ressourcesGrid.pollution;
     }
+
 }

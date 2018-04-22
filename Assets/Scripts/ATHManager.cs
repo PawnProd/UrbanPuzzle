@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class ATHManager : MonoBehaviour {
 
     public GameObject cursor;
     public GameObject[] prefabsCell;
-
+    public Text MoneyCount,EnergyCount,PopulationCount,EnvironnmentCount;
     [HideInInspector]
     public GameObject cell;
 
