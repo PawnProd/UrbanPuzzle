@@ -9,7 +9,9 @@ public class ATHManager : MonoBehaviour {
     public GameObject cursor;
     public GameObject[] prefabsCell;
 
-    public Text moneyCount,energyCount,populationCount,environnmentCount;
+    public GameObject panelWin;
+
+    public Text moneyCount,energyCount,populationCount,environnmentCount,levelText;
 
     [HideInInspector]
     public GameObject cell;
@@ -17,6 +19,7 @@ public class ATHManager : MonoBehaviour {
     private void Start()
     {
         ResetCursor();
+        levelText.text = "LEVEL " + MasterGameManager.Instance.numLevel;
     }
 
     public void SelectBatiment(string type)
@@ -91,4 +94,12 @@ public class ATHManager : MonoBehaviour {
         environnmentCount.text = envi.ToString();
 
     }
+
+    public void ShowPanelWin()
+    {
+        panelWin.SetActive(true);
+    }
+
+
+
 }
