@@ -24,7 +24,7 @@ public class ATHManager : MonoBehaviour {
        
         cursor.transform.position = EventSystem.current.currentSelectedGameObject.transform.position;
         Quaternion gridRotation = GameManager.Instance.gridController.transform.rotation;
-        Quaternion newRotation = Quaternion.Euler(-90, gridRotation.y, 0);
+        Quaternion newRotation = Quaternion.Euler(-90, 0, gridRotation.eulerAngles.y);
         switch (type)
         {
             case "residence":
@@ -69,6 +69,18 @@ public class ATHManager : MonoBehaviour {
             }
         }
        
+    }
+
+    public void UpdateRotation()
+    {
+        if(cell)
+        {
+            print("Rotation update");
+            Quaternion gridRotation = GameManager.Instance.gridController.transform.rotation;
+            Quaternion newRotation = Quaternion.Euler(-90, 0, gridRotation.eulerAngles.y);
+            cell.transform.rotation = newRotation;
+        }
+        
     }
 
     public void UpdateRessources(int money, int energy, int pop, int envi)

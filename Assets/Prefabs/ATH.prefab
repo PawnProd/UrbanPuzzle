@@ -533,7 +533,6 @@ GameObject:
   - component: {fileID: 224927189169571958}
   - component: {fileID: 222256794373199994}
   - component: {fileID: 114245482027688850}
-  - component: {fileID: 114269474879106308}
   m_Layer: 5
   m_Name: Panel_Ressources
   m_TagString: Untagged
@@ -1085,18 +1084,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &114269474879106308
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1871606330563880}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68c3aa6d8dce3ac4598c8fb51ec56668, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cursor: {fileID: 0}
 --- !u!114 &114274871619610138
 MonoBehaviour:
   m_ObjectHideFlags: 1
