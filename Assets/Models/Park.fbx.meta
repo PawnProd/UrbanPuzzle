@@ -6,11 +6,46 @@ ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Object
+    100004: Object002
+    100006: Object004
+    100008: Object005
+    100010: Object006
+    100012: Object007
+    100014: park
     400000: //RootNode
+    400002: Object
+    400004: Object002
+    400006: Object004
+    400008: Object005
+    400010: Object006
+    400012: Object007
+    400014: park
     2100000: 01 - Default
     2300000: //RootNode
+    2300002: Object
+    2300004: Object002
+    2300006: Object004
+    2300008: Object005
+    2300010: Object006
+    2300012: Object007
+    2300014: park
     3300000: //RootNode
+    3300002: Object
+    3300004: Object002
+    3300006: Object004
+    3300008: Object005
+    3300010: Object006
+    3300012: Object007
+    3300014: park
     4300000: park
+    4300002: Object
+    4300004: Object002
+    4300006: Object004
+    4300008: Object005
+    4300010: Object006
+    4300012: Object007
+    7400000: Take 001
     9500000: //RootNode
   externalObjects: {}
   materials:
@@ -38,11 +73,39 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 41
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.4
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importVisibility: 1

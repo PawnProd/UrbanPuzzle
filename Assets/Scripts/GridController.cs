@@ -160,7 +160,7 @@ public class GridController : MonoBehaviour {
     public void Rotate(float yawValue)
     {
         print(m_centerGrid);
-         transform.RotateAround(m_centerGrid, Vector3.up, yawValue);
+        transform.RotateAround(m_centerGrid, Vector3.up, yawValue);
     }
 }
 

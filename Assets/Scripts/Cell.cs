@@ -37,7 +37,7 @@ public class Cell : MonoBehaviour {
 
     public void GenerateCell()
     {
-        if (type != CellType.empty && type != CellType.mountain)
+        if (type != CellType.empty && type != CellType.mountain && gameObject.GetComponent<CellBehaviour>() == null)
         {
             gameObject.AddComponent<CellBehaviour>();
         }
@@ -66,7 +66,7 @@ public class Cell : MonoBehaviour {
 
     public void GenerateCellInGame()
     {
-        if (type != CellType.empty && type != CellType.mountain)
+        if (type != CellType.empty && type != CellType.mountain && gameObject.GetComponent<CellBehaviour>() == null)
         {
             gameObject.AddComponent<CellBehaviour>();
         }
