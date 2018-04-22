@@ -23,19 +23,21 @@ public class ATHManager : MonoBehaviour {
     {
        
         cursor.transform.position = EventSystem.current.currentSelectedGameObject.transform.position;
+        Quaternion gridRotation = GameManager.Instance.gridController.transform.rotation;
+        Quaternion newRotation = Quaternion.Euler(-90, gridRotation.y, 0);
         switch (type)
         {
             case "residence":
-                cell = Instantiate(prefabsCell[0], Vector3.zero, GameManager.Instance.gridController.transform.rotation);
+                cell = Instantiate(prefabsCell[0], Vector3.zero, newRotation);
                 break;
             case "industrie":
-                cell = Instantiate(prefabsCell[1], Vector3.zero, GameManager.Instance.gridController.transform.rotation);
+                cell = Instantiate(prefabsCell[1], Vector3.zero, newRotation);
                 break;
             case "commerce":
-                cell = Instantiate(prefabsCell[2], Vector3.zero, GameManager.Instance.gridController.transform.rotation);
+                cell = Instantiate(prefabsCell[2], Vector3.zero, newRotation);
                 break;
             case "parc":
-                cell = Instantiate(prefabsCell[3], Vector3.zero, GameManager.Instance.gridController.transform.rotation);
+                cell = Instantiate(prefabsCell[3], Vector3.zero, newRotation);
                 break;
             default:
                 cell = null;

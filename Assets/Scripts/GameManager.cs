@@ -10,7 +10,10 @@ public class GameManager : MonoBehaviour {
     public ATHManager athManager;
     public RessourcesGain ressources;
 
-    public int[] goalsRessources;
+    public int moneyGoal = 0;
+    public int energyGoal = 0;
+    public int popGoal = 0;
+    public int envirGoal = 0;
 
 
     // Use this for initialization
@@ -67,12 +70,22 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         UpdateRessource();
+        if(CheckWin())
+        {
+            print("Win !");
+        }
     }
 
     void UpdateRessource()
     {
         RessourcesGain ressourcesGrid = gridController.GetAllRessourcesOfGrid();
-        athManager.UpdateRessources(ressourcesGrid.energy, ressourcesGrid.money, ressourcesGrid.population, ressourcesGrid.pollution);
+        athManager.UpdateRessources(ressourcesGrid.money, ressourcesGrid.energy, ressourcesGrid.population, ressourcesGrid.pollution);
     }
 
+    public bool CheckWin()
+    {
+        RessourcesGain ressourcesGrid = gridController.GetAllRessourcesOfGrid();
+
+        return (moneyGoal <= ressourcesGrid.money) && (energyGoal <= ressourcesGrid.energy) && (popGoal <= ressourcesGrid.population) && (envirGoal <= ressourcesGrid.pollution);
+    }
 }

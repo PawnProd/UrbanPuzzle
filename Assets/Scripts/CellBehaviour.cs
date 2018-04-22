@@ -19,7 +19,8 @@ public class CellBehaviour : MonoBehaviour {
     {
         cell = GetComponent<Cell>();
         gridC = transform.parent.GetComponent<GridController>().grid;
-        cellConditions = cell.building.cellConditions;
+        if(cell.building != null)
+            cellConditions = cell.building.cellConditions;
     }
 
     public bool CheckBehavior()

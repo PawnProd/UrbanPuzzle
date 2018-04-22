@@ -114,7 +114,7 @@ MonoBehaviour:
   - {fileID: 1178535769233178, guid: 6692ff599ceba9e44bc946336f68bfc3, type: 2}
   - {fileID: 1262555131077480, guid: f4dfdecf620dfe44baf8359e356d3726, type: 2}
   - {fileID: 1691690541492054, guid: 30f2264e30bdfe54c9a50e3102ee175e, type: 2}
-  - {fileID: 1342957676828278, guid: 9c8a5077dbb7fe44ea98bbb7608e7e16, type: 2}
+  - {fileID: 1545551308436414, guid: c754873bddb9dcc4288548bc9b68066b, type: 2}
   building: {fileID: 0}
   m_posX: 0
   m_posY: 0

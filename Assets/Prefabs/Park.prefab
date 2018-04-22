@@ -574,10 +574,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ressources:
-    money: -2
-    energy: -1
+    money: -3
+    energy: 0
     population: 0
-    pollution: 2
+    pollution: 3
   cellConditions:
   - key: 1
     value: 0
