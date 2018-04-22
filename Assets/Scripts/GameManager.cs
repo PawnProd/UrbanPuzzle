@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour {
     public GridController gridController;
     public ATHManager athManager;
     public RessourcesGain ressources;
+    public PanelValue ressourcesEcrit;
 
     // Use this for initialization
     void Awake () {
@@ -81,5 +82,12 @@ public class GameManager : MonoBehaviour {
             }
         }
         ressources = ressourcesGrid;
+        ressourcesEcrit.RessourcesText.text =
+            "Ressource :" + "\r\n" +
+            "Argent: "+ ressourcesGrid.money + "\r\n"+
+            "Energie: " + ressourcesGrid.energy + "\r\n"+
+            "Habitant: " + ressourcesGrid.population + "\r\n"+
+            "Environnement: " + ressourcesGrid.pollution + "\r\n"
+            ;
     }
 }
