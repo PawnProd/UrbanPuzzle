@@ -8,9 +8,10 @@ public class GameManager : MonoBehaviour {
 
     public GridController gridController;
     public ATHManager athManager;
+    public RessourcesGain ressources;
 
-	// Use this for initialization
-	void Awake () {
+    // Use this for initialization
+    void Awake () {
 		
         if(Instance == null)
         {
@@ -59,7 +60,26 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        UpdateRessource();
+    }
 
+    void UpdateRessource()
+    {
+        RessourcesGain ressourcesGrid;
+        ressourcesGrid.energy = 0;
+        ressourcesGrid.money = 0;
+        ressourcesGrid.pollution = 0;
+        ressourcesGrid.population= 0;
+        foreach (Cell cellule in gridController.grid)
+        {
+            if (cellule.type != CellType.empty && cellule.type != CellType.mountain)
+            {
+                ressourcesGrid.energy += cellule.building.ressources.energy;
+                ressourcesGrid.money += cellule.building.ressources.money;
+                ressourcesGrid.pollution += cellule.building.ressources.pollution;
+                ressourcesGrid.population += cellule.building.ressources.population;
+            }
+        }
+        ressources = ressourcesGrid;
+    }
 }

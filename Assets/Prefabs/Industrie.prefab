@@ -109,9 +109,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ressources:
     money: 0
-    energy: 0
-    population: 0
-    pollution: 0
+    energy: 3
+    population: -1
+    pollution: -1
   cellConditions:
   - key: 0
     value: 0
