@@ -9,4 +9,14 @@ public class BuildingController : MonoBehaviour {
 
     public List<Conditions> cellConditions = new List<Conditions>();
 
+    public GameObject floatingFeedback;
+
+    private void Update()
+    {
+        if(floatingFeedback && floatingFeedback.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("End"))
+        {
+            floatingFeedback.SetActive(false);
+        }
+    }
+
 }

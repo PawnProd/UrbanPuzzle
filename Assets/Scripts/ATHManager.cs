@@ -9,7 +9,9 @@ public class ATHManager : MonoBehaviour {
     public GameObject cursor;
     public GameObject[] prefabsCell;
 
-    public Text moneyCount,energyCount,populationCount,environnmentCount;
+    public GameObject panelWin;
+
+    public Text moneyCount,energyCount,populationCount,environnmentCount,levelText;
 
     [HideInInspector]
     public GameObject cell;
@@ -17,6 +19,7 @@ public class ATHManager : MonoBehaviour {
     private void Start()
     {
         ResetCursor();
+        levelText.text = "LEVEL " + MasterGameManager.Instance.numLevel;
     }
 
     public void SelectBatiment(string type)
@@ -24,7 +27,7 @@ public class ATHManager : MonoBehaviour {
        
         cursor.transform.position = EventSystem.current.currentSelectedGameObject.transform.position;
         Quaternion gridRotation = GameManager.Instance.gridController.transform.rotation;
-        Quaternion newRotation = Quaternion.Euler(-90, gridRotation.y, 0);
+        Quaternion newRotation = Quaternion.Euler(-90, 0, gridRotation.eulerAngles.y);
         switch (type)
         {
             case "residence":
@@ -71,6 +74,18 @@ public class ATHManager : MonoBehaviour {
        
     }
 
+    public void UpdateRotation()
+    {
+        if(cell)
+        {
+            print("Rotation update");
+            Quaternion gridRotation = GameManager.Instance.gridController.transform.rotation;
+            Quaternion newRotation = Quaternion.Euler(-90, 0, gridRotation.eulerAngles.y);
+            cell.transform.rotation = newRotation;
+        }
+        
+    }
+
     public void UpdateRessources(int money, int energy, int pop, int envi)
     {
         moneyCount.text = money.ToString();
@@ -79,4 +94,12 @@ public class ATHManager : MonoBehaviour {
         environnmentCount.text = envi.ToString();
 
     }
+
+    public void ShowPanelWin()
+    {
+        panelWin.SetActive(true);
+    }
+
+
+
 }

@@ -22,13 +22,18 @@ public class GameManager : MonoBehaviour {
         if(Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
         }
 	}
+
+    public void ReloadLevel()
+    {
+        MasterGameManager.Instance.ReloadLevel();
+    }
+
+    public void NextLevel()
+    {
+        MasterGameManager.Instance.NextLevel();
+    }
 
     public void PlaceBuilding()
     {
@@ -72,7 +77,7 @@ public class GameManager : MonoBehaviour {
         UpdateRessource();
         if(CheckWin())
         {
-            print("Win !");
+            athManager.ShowPanelWin();
         }
     }
 

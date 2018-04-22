@@ -32,5 +32,6 @@ public class PlayerController : MonoBehaviour {
     public void RotateGrid(float mouseX)
     { 
         gameManager.gridController.Rotate(mouseX);
+        gameManager.athManager.UpdateRotation();
     }
 }
