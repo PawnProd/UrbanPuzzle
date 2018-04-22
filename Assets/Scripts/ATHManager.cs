@@ -8,9 +8,16 @@ public class ATHManager : MonoBehaviour {
 
     public GameObject cursor;
     public GameObject[] prefabsCell;
-    public Text MoneyCount,EnergyCount,PopulationCount,EnvironnmentCount;
+
+    public Text moneyCount,energyCount,populationCount,environnmentCount;
+
     [HideInInspector]
     public GameObject cell;
+
+    private void Start()
+    {
+        ResetCursor();
+    }
 
     public void SelectBatiment(string type)
     {
@@ -19,21 +26,26 @@ public class ATHManager : MonoBehaviour {
         switch (type)
         {
             case "residence":
-                cell = Instantiate(prefabsCell[0]);
+                cell = Instantiate(prefabsCell[0], Vector3.zero, GameManager.Instance.gridController.transform.rotation);
                 break;
             case "industrie":
-                cell = Instantiate(prefabsCell[1]);
+                cell = Instantiate(prefabsCell[1], Vector3.zero, GameManager.Instance.gridController.transform.rotation);
                 break;
             case "commerce":
-                cell = Instantiate(prefabsCell[2]);
+                cell = Instantiate(prefabsCell[2], Vector3.zero, GameManager.Instance.gridController.transform.rotation);
                 break;
             case "parc":
-                cell = Instantiate(prefabsCell[3]);
+                cell = Instantiate(prefabsCell[3], Vector3.zero, GameManager.Instance.gridController.transform.rotation);
                 break;
             default:
                 cell = null;
                 break;
         }
+    }
+
+    public void ResetCursor()
+    {
+        cursor.transform.position = new Vector3(1000, -3000, 0);
     }
 
     void Update()
@@ -55,5 +67,14 @@ public class ATHManager : MonoBehaviour {
             }
         }
        
+    }
+
+    public void UpdateRessources(int money, int energy, int pop, int envi)
+    {
+        moneyCount.text = money.ToString();
+        energyCount.text = energy.ToString();
+        populationCount.text = pop.ToString();
+        environnmentCount.text = envi.ToString();
+
     }
 }

@@ -10,10 +10,7 @@ public class GameManager : MonoBehaviour {
     public ATHManager athManager;
     public RessourcesGain ressources;
 
-    public bool isEnvironnement, isEnergy, isPopulation, isMoney;
-    public bool commerceOk, habitationOk, usineOk, jardinOk;
-    public bool objectifRemplis;
-    public int environnementObjectives, energyObjectives, populationObjectives, moneyObjectives;
+    public int[] goalsRessources;
 
 
     // Use this for initialization
@@ -41,23 +38,26 @@ public class GameManager : MonoBehaviour {
                 if (hit.collider.tag == "Cell")
                 {
                     string objName = athManager.cell.name.Replace("(Clone)", "");
-                    switch (objName)
+                    if(hit.collider.GetComponent<Cell>().type == CellType.empty)
                     {
-                        case "CommerceATH":
-                            gridController.PlaceCommerceInCell(hit.collider.GetComponent<Cell>());
-                            break;
-                        case "ResidenceATH":
-                            gridController.PlaceResidenceInCell(hit.collider.GetComponent<Cell>());
-                            break;
-                        case "IndustrieATH":
-                            gridController.PlaceIndustrieInCell(hit.collider.GetComponent<Cell>());
-                            break;
-                        case "ParcATH":
-                            gridController.PlaceParcInCell(hit.collider.GetComponent<Cell>());
-                            break;
-                        default:
-                            break;
-                    }
+                        switch (objName)
+                        {
+                            case "CommerceATH":
+                                gridController.PlaceCommerceInCell(hit.collider.GetComponent<Cell>());
+                                break;
+                            case "ResidenceATH":
+                                gridController.PlaceResidenceInCell(hit.collider.GetComponent<Cell>());
+                                break;
+                            case "IndustrieATH":
+                                gridController.PlaceIndustrieInCell(hit.collider.GetComponent<Cell>());
+                                break;
+                            case "ParcATH":
+                                gridController.PlaceParcInCell(hit.collider.GetComponent<Cell>());
+                                break;
+                            default:
+                                break;
+                        }
+                    }   
                 }
             }
         }
@@ -71,27 +71,8 @@ public class GameManager : MonoBehaviour {
 
     void UpdateRessource()
     {
-        RessourcesGain ressourcesGrid;
-        ressourcesGrid.energy = 0;
-        ressourcesGrid.money = 0;
-        ressourcesGrid.pollution = 0;
-        ressourcesGrid.population= 0;
-        foreach (Cell cellule in gridController.grid)
-        {
-            if (cellule.type != CellType.empty && cellule.type != CellType.mountain)
-            {
-                ressourcesGrid.energy += cellule.building.ressources.energy;
-                ressourcesGrid.money += cellule.building.ressources.money;
-                ressourcesGrid.pollution += cellule.building.ressources.pollution;
-                ressourcesGrid.population += cellule.building.ressources.population;
-            }
-        }
-        ressources = ressourcesGrid;
-
-        athManager.MoneyCount.text = "MONEY "+ressourcesGrid.energy;
-        athManager.EnergyCount.text = "ENERGY " + ressourcesGrid.money;
-        athManager.PopulationCount.text = "POPULATION " + ressourcesGrid.population;
-        athManager.EnvironnmentCount.text = "POLLUTION " + ressourcesGrid.pollution;
+        RessourcesGain ressourcesGrid = gridController.GetAllRessourcesOfGrid();
+        athManager.UpdateRessources(ressourcesGrid.energy, ressourcesGrid.money, ressourcesGrid.population, ressourcesGrid.pollution);
     }
 
 }

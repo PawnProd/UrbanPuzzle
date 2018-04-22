@@ -102,6 +102,7 @@ public class Cell : MonoBehaviour {
         else
         {
             Destroy(GameManager.Instance.athManager.cell.gameObject);
+            GameManager.Instance.athManager.ResetCursor();
         }
     }
 }

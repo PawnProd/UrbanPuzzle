@@ -50,9 +50,7 @@ public class GridController : MonoBehaviour {
         {
             for (int y = 0; y < gridSize; ++y) // VERTICAL
             {
-                print("Temp " + temp[x].cellList[y].GetPosX());
                 grid[x, y] = temp[x].cellList[y];
-                print("Grid " + grid[x, y].GetPosX());
             }
         }
     }
@@ -89,7 +87,6 @@ public class GridController : MonoBehaviour {
 
     public void Clear()
     {
-        print("Grid" + grid);
         for (int x = 0; x < gridSize; ++x) // HORIZONTAL
         {
             for (int y = 0; y < gridSize; ++y) // VERTICAL
@@ -105,7 +102,6 @@ public class GridController : MonoBehaviour {
         {
             for (int y = 0; y < gridSize; ++y) // VERTICAL
             {
-                Debug.Log("X = " + x + " Y = " + y + " grid = " + grid[x, y]);
                 if(grid[x,y].GetComponent<CellBehaviour>() != null)
                     if(!grid[x,y].GetComponent<CellBehaviour>().CheckBehavior())
                         throw new System.Exception("La condition de la cellule[" + x + "," + y + "] n'est pas remplit");
@@ -159,8 +155,29 @@ public class GridController : MonoBehaviour {
 
     public void Rotate(float yawValue)
     {
-        print(m_centerGrid);
         transform.RotateAround(m_centerGrid, Vector3.up, yawValue);
+    }
+
+    public RessourcesGain GetAllRessourcesOfGrid()
+    {
+        RessourcesGain gain = new RessourcesGain();
+        for (int x = 0; x < gridSize; ++x) // HORIZONTAL
+        {
+            for (int y = 0; y < gridSize; ++y) // VERTICAL
+            {
+                if (grid[x, y].type != CellType.empty && grid[x, y].type != CellType.mountain)
+                {
+                    BuildingController building = grid[x, y].building;
+                    gain.money += building.ressources.money;
+                    gain.energy += building.ressources.energy;
+                    gain.population += building.ressources.population;
+                    gain.pollution += building.ressources.pollution;
+                }
+                   
+            }
+        }
+
+        return gain;
     }
 }
 
