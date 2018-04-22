@@ -1799,6 +1799,7 @@ MonoBehaviour:
     energy: 0
     population: 0
     pollution: 0
+  ressourcesEcrit: {fileID: 1927714945}
 --- !u!4 &1434370329
 Transform:
   m_ObjectHideFlags: 0
@@ -2524,6 +2525,12 @@ Transform:
   m_Father: {fileID: 1775954670}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1927714945 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114225545262715054, guid: e2f88c651c39e2c4cb45e6bfba3ce068,
+    type: 2}
+  m_PrefabInternal: {fileID: 594137310}
+  m_Script: {fileID: 11500000, guid: b1661d7336422df49a4324497b14d591, type: 3}
 --- !u!1 &1930960039
 GameObject:
   m_ObjectHideFlags: 0
@@ -2656,7 +2663,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 1, g: 0.8086442, b: 0.28676468, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30

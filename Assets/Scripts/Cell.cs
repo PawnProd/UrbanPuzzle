@@ -95,6 +95,9 @@ public class Cell : MonoBehaviour {
         if (!gameObject.GetComponent<CellBehaviour>().CheckBehavior())
         {
             Destroy(building.gameObject);
+            type = CellType.empty;
+            Destroy(GetComponent<CellBehaviour>());
+
         }
         else
         {
