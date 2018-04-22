@@ -7,13 +7,14 @@ public class MasterGameManager : MonoBehaviour {
 
     public static MasterGameManager Instance { get; private set; }
 
-    public int numLevel = 1;
+    public int numLevel;
 
     private void Awake()
     {
         if(Instance == null)
         {
             Instance = this;
+            numLevel = 1;
             DontDestroyOnLoad(gameObject);
         }
         else
