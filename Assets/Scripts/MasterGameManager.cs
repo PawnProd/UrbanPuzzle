@@ -26,7 +26,7 @@ public class MasterGameManager : MonoBehaviour {
     public void NextLevel()
     {
         ++numLevel;
-        if(SceneManager.GetSceneByName("Level" + numLevel) != null)
+        if(Application.CanStreamedLevelBeLoaded("Level" + numLevel))
         {
             SceneManager.LoadScene("Level" + numLevel);
         }
