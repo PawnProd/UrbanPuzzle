@@ -13,7 +13,11 @@ public class BuildingController : MonoBehaviour {
 
     private void Update()
     {
-        if(floatingFeedback && floatingFeedback.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("End"))
+        var fwd = Camera.main.transform.forward;
+        fwd.y = 0.0f;
+        floatingFeedback.transform.rotation = Quaternion.LookRotation(fwd);
+
+        if (floatingFeedback && floatingFeedback.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("End"))
         {
             floatingFeedback.SetActive(false);
         }

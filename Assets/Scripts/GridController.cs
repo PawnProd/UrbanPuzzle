@@ -155,7 +155,7 @@ public class GridController : MonoBehaviour {
 
     public void Rotate(float yawValue)
     {
-        transform.RotateAround(m_centerGrid, Vector3.up, yawValue);
+        transform.RotateAround(m_centerGrid, Vector3.up, yawValue * 1.2f);
     }
 
     public RessourcesGain GetAllRessourcesOfGrid()
