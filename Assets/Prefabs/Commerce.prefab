@@ -864,7 +864,7 @@ MonoBehaviour:
   ressources:
     money: 3
     energy: -2
-    population: 0
+    population: -1
     pollution: 0
   cellConditions:
   - key: 0

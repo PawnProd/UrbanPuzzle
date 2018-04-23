@@ -1022,7 +1022,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ressources:
-    money: 1
+    money: 0
     energy: -1
     population: 3
     pollution: -1
