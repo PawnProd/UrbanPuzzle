@@ -14,7 +14,7 @@ public class MasterGameManager : MonoBehaviour {
         if(Instance == null)
         {
             Instance = this;
-            numLevel = 1;
+            numLevel = 0;
             DontDestroyOnLoad(gameObject);
         }
         else

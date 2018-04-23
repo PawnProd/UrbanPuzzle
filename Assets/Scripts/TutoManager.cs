@@ -26,6 +26,9 @@ public class TutoManager : MonoBehaviour {
     // Phase 6
     public GameObject parc;
 
+    // End Phase
+    public GameObject endTuto;
+
     public Text tutoText;
 
     private int indexTuto;
@@ -71,9 +74,17 @@ public class TutoManager : MonoBehaviour {
             industryATH.SetActive(false);
             overlayEffect.SetActive(false);
         }
+        else if (indexTuto == 8)
+        {
+            endTuto.SetActive(true);
+        }
 
-        tutoText.text = allTextTuto[indexTuto];
-        ++indexTuto;
+        if(indexTuto < 8)
+        {
+            tutoText.text = allTextTuto[indexTuto];
+            ++indexTuto;
+        }
+      
     }
 
 
