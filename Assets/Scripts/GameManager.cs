@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour {
         {
             Instance = this;
         }
+        
 	}
 
     public void ReloadLevel()
@@ -48,7 +49,7 @@ public class GameManager : MonoBehaviour {
                 if (hit.collider.tag == "Cell")
                 {
                     string objName = athManager.cell.name.Replace("(Clone)", "");
-                    if(hit.collider.GetComponent<Cell>().type == CellType.empty)
+                    if (hit.collider.GetComponent<Cell>().type == CellType.empty)
                     {
                         switch (objName)
                         {
@@ -76,6 +77,7 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
         UpdateRessource();
         if(CheckWin())
         {

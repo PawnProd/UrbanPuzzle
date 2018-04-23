@@ -5185,6 +5185,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numLevel: 1
+  ambiantSource:
+  - {fileID: 8300000, guid: 30411d85ccd53cb4dafbcabbada2f09c, type: 3}
+  - {fileID: 8300000, guid: 2f11f9c9fab274643bd3d55f4cbf9935, type: 3}
+  - {fileID: 8300000, guid: 089bb372e18bf8e46b536774777c6610, type: 3}
+  - {fileID: 8300000, guid: bc324e256be6e2f4393ca2782463b5aa, type: 3}
 --- !u!4 &1231279853
 Transform:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ public class MasterGameManager : MonoBehaviour {
     public static MasterGameManager Instance { get; private set; }
 
     public int numLevel;
+    public AudioClip[] ambiantSource;
 
     private void Awake()
     {
@@ -21,6 +22,7 @@ public class MasterGameManager : MonoBehaviour {
         {
             Destroy(gameObject);
         }
+        InvokeRepeating("PlayBatiment", Random.Range(30, 50), Random.Range(40, 60));
     }
 
     public void NextLevel()
@@ -40,5 +42,11 @@ public class MasterGameManager : MonoBehaviour {
     public void ReloadLevel()
     {
         SceneManager.LoadScene("Level" + numLevel);
+    }
+
+    public void PlayBatiment()
+    {
+        AudioClip sonJoues = ambiantSource[Random.Range(0,ambiantSource.Length)];
+        gameObject.GetComponent<AudioSource>().PlayOneShot(sonJoues);
     }
 }

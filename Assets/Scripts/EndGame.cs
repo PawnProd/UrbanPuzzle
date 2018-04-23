@@ -32,4 +32,9 @@ public class EndGame : MonoBehaviour {
             Credits.SetActive(true);
         }
     }
+
+    public void Quittez()
+    {
+        Application.Quit();
+    }
 }
