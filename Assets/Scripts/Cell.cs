@@ -97,6 +97,7 @@ public class Cell : MonoBehaviour {
             Destroy(building.gameObject);
             type = CellType.empty;
             Destroy(GetComponent<CellBehaviour>());
+            GameManager.Instance.refusSource.Play();
 
         }
         else

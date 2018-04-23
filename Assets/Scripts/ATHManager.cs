@@ -20,6 +20,7 @@ public class ATHManager : MonoBehaviour {
     {
         ResetCursor();
         levelText.text = "LEVEL " + MasterGameManager.Instance.numLevel;
+        panelWin.transform.GetChild(0).GetComponent<Text>().text = "LEVEL " + MasterGameManager.Instance.numLevel;
     }
 
     public void SelectBatiment(string type)

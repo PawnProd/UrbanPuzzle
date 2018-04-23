@@ -26,7 +26,15 @@ public class MasterGameManager : MonoBehaviour {
     public void NextLevel()
     {
         ++numLevel;
-        SceneManager.LoadScene("Level" + numLevel);
+        if(SceneManager.GetSceneByName("Level" + numLevel) != null)
+        {
+            SceneManager.LoadScene("Level" + numLevel);
+        }
+        else
+        {
+            SceneManager.LoadScene("EndGame");
+        }
+       
     }
 
     public void ReloadLevel()

@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour {
     public ATHManager athManager;
     public RessourcesGain ressources;
 
+    public AudioSource refusSource;
+
     public int moneyGoal = 0;
     public int energyGoal = 0;
     public int popGoal = 0;
